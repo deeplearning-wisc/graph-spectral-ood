@@ -404,10 +404,7 @@ def pre_train(epoch):
         net.zero_grad()
 
         # forward
-        if args.name == 'spectral':
-            data_dict = net.forward_scl(x1, x2, aux_set, aux_set1,)
-        else:
-            data_dict = net.forward_sscl(x1, x2, aux_set, aux_set1, target)
+        data_dict = net.forward_sscl(x1, x2, aux_set, aux_set1, target)
 
         loss = data_dict['loss'].mean()
 
@@ -415,10 +412,7 @@ def pre_train(epoch):
         optimizer.step()
 
         if (batch_num + 1) % args.print_freq == 0:
-            if args.name == 'spectral':
-                loss1, loss2, loss3, loss4, loss5 = 0, data_dict["d_dict"]["loss2"].item(), 0, 0, data_dict["d_dict"]["loss5"].item()
-            else:
-                loss1, loss2, loss3, loss4, loss5 = data_dict["d_dict"]["loss1"].item(), data_dict["d_dict"]["loss2"].item(), data_dict["d_dict"]["loss3"].item(), \
+            loss1, loss2, loss3, loss4, loss5 = data_dict["d_dict"]["loss1"].item(), data_dict["d_dict"]["loss2"].item(), data_dict["d_dict"]["loss3"].item(), \
                                                     data_dict["d_dict"]["loss4"].item(), data_dict["d_dict"]["loss5"].item()
 
             print('Train ==> [{0}][{1}/{2}] | Loss_all {3:.3f} | c1:{4:.2e} | c2:{5:.3f} | c3:{6:.2e} | c4:{7:.2e} | c5:{8:.3f}'.format(
@@ -454,15 +448,6 @@ class ArrayDataset(torch.utils.data.dataset.Dataset):
 
     def __len__(self):
         return len(self.features)
-
-class LinearClassifier(nn.Module):
-    """Linear classifier"""
-    def __init__(self, feat_dim, num_classes=10):
-        super(LinearClassifier, self).__init__()
-        self.fc = nn.Linear(feat_dim, num_classes)
-
-    def forward(self, features):
-        return self.fc(features)
 
 def mix_pretrain_batches(aux_in_set, aux_in_cor_set, aux_out_set):
     
@@ -1573,7 +1558,7 @@ print('Beginning Training\n')
 #compute training loss for scone/woods methods
 if args.score in [ 'woods_nn', 'woods', 'scone']:
     # full_train_loss = evaluate_classification_loss_training()
-    full_train_loss = 0.10
+    full_train_loss = 0.10 # no use in our setup
 
 ###################################################################
 # Main loop #

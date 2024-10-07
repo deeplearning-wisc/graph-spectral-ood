@@ -13,7 +13,7 @@ pip install -r requirements.txt
 ```
 
 ## Dataset Preparation
-Download the data in the folder `./data`
+Download the dataset to the folder `./data`
 
 Here are the links for the semantic OOD datasets used in this paper: [SVHN](http://ufldl.stanford.edu/housenumbers/), [Textures](https://www.robots.ox.ac.uk/~vgg/data/dtd/), [Places365](http://places2.csail.mit.edu/download.html), [LSUN](https://www.dropbox.com/s/fhtsw1m3qxlwj6h/LSUN.tar.gz), [LSUN-R](https://www.dropbox.com/s/moqh2wh8696c3yl/LSUN_resize.tar.gz), and [iSUN](https://www.dropbox.com/s/ssz7qxfqae0cca5/iSUN.tar.gz). We refer readers to these links [Scone](https://github.com/deeplearning-wisc/scone) and [Robustness](https://github.com/hendrycks/robustness) to download the covariate OOD datasets.
 
@@ -23,7 +23,7 @@ wget http://pages.cs.wisc.edu/~huangrui/imagenet_ood_dataset/iNaturalist.tar.gz
 ```
 
 ## Demo
-To pretrain the model (e.g., using the CIFAR-10-C as the covariate OOD dataset and SVHN as the semantic OOD dataset), you can `cd ./CIFAR` first and run the following command:
+To pretrain the model (e.g., using the CIFAR-10-C as the covariate OOD dataset and SVHN as the semantic OOD dataset), you can modify the variable `checkpoints_dir` in the `./CIFAR/run_pt.sh`, and run the following command:
 ```bash
 sh run_pt.sh graph_ood cifar10 svhn svhn
 ```
