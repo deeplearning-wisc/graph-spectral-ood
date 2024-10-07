@@ -45,7 +45,7 @@ If you find our work useful, please consider citing our paper:
 @article{wang2024bridging,
   title={Bridging OOD Detection and Generalization: A Graph-Theoretic View},
   author={Wang, Han and Li, Yixuan},
-  journal={arXiv preprint arXiv:2409.18205},
+  journal={Advances in Neural Information Processing Systems},
   year={2024}
 }
 ```
@@ -57,7 +57,7 @@ Our codebase is heavily based on the followings:
     sun2023sorl,
     title={A Graph-Theoretic Framework for Understanding Open-World Semi-Supervised Learning},
     author={Yiyou Sun and Zhenmei Shi and Yixuan Li},
-    booktitle={NeurIPS},
+    booktitle={Advances in Neural Information Processing Systems},
     year={2023},
     url={https://openreview.net/forum?id=ZITOHWeAy7}
 }
